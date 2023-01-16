@@ -11,50 +11,55 @@
         <script defer src="js/script.js"></script>
     </head>
     <body>
-        <h2>Administrador de Citas de Veterinaria</h2>
+        <h2 id="titulo">Administrador de Citas de Veterinaria</h2>
         <div>
-            <form id = "nueva-cita">
-                <legend>Datos del Paciente</legend>
-                <div>
-                    <label>Nombre Mascota</label>
-                    <div>
-                        <input></input>
+            <div id="citas">
+                <form id = "nueva-cita">
+                    <h2>Datos del Paciente</h2>
+                    <div class="grupo-formulario">
+                        <label>Nombre Mascota</label>
+                        <div>
+                            <input type="text"></input>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <label>Propietario</label>
-                    <div>
-                        <input></input>
+                    <div class="grupo-formulario">
+                        <label>Propietario</label>
+                        <div>
+                            <input type="text"></input>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <label>Teléfono</label>
-                    <div>
-                        <input></input>
+                    <div class="grupo-formulario">
+                        <label>Teléfono</label>
+                        <div>
+                            <input type="tel"></input>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <label>Fecha</label>
-                    <div>
-                        <input type="date"></input>
+                    <div class="grupo-formulario">
+                        <label>Fecha</label>
+                        <div>
+                            <input type="date"></input>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <label>Hora</label>
-                    <div>
-                        <input type="time"></input>
+                    <div class="grupo-formulario">
+                        <label>Hora</label>
+                        <div>
+                            <input type="time"></input>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <label>Sintomas</label>
-                    <div>
-                        <textarea></textarea>
+                    <div class="grupo-formulario">
+                        <label>Sintomas</label>
+                        <div>
+                            <textarea ></textarea>
+                        </div>
                     </div>
+                    <div>
+                        <button type="submit">Crear Cita</button>
+                    </div>
+                </form>
+                <div id="administrar-cita">
+                    <h2>Administra tus citas</h2>
+                    <ul id="citas" class="lista-citas"></ul>
                 </div>
-            </form>
-            <div>
-                <h2>Administra tus citas</h2>
-                <ul id="citas" class="lista-citas"></ul>
             </div>
         </div>
     </body>

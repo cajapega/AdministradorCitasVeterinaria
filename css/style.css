@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color:lavenderblush;
+
+}
+
+input, textarea {
+    border-radius: 10px;
+}
+
+body div:first-child {
+    background-color:crimson;
+    padding: 1rem;
+    border-radius: 20px;
+
+    line-height: 1.7rem;
+}
+
+
+#citas {
+    display: flex;
+    font-size: 0.8rem;
+
+}
+
+#citas #nueva-cita {
+    margin: 0px 20px 0px 20px;
+}
+
+#citas #administrar-cita {
+    margin: 0px 20px 0px 20px;
+}
+
+.grupo-formulario {
+    display: flex;
+    justify-content: space-between;
+}
+
+.grupo-formulario div {
+    margin-left: 20px;
+}
+
+
+
+
+
