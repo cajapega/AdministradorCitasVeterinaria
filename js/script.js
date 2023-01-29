@@ -53,19 +53,28 @@ class Citas {
 
 class InterfazUsuario {
     imprimirAlerta(mensaje, tipo) {
-        //Creamos el div del mensaje de alerta
-        //const divMensaje = document.createElement('div');
-        //divMensaje.classList.add('mensaje-alerta')
+        /*Creo variable que guardara el elemento contenido del DOM y dentro se insertara
+        el nuevo elemento*/
+        const contenido = document.querySelector('#contenido');
+        //Creo el div del mensaje de alerta
+        const divMensaje = document.createElement('div');
 
-        //agregar clase al tipo de error}
-        //if(tipo =="error") {
-            //divMensaje.classList.add('mensaje-alerta');
-        //} else {
-            //divMensaje.classList.add('mensaje-maravilloso')
-        //}
+        //Agregar clase al tipo de error}
+        if(tipo == "error") {
+            divMensaje.classList.add('mensaje-alerta');
+    
+        } else {
+            divMensaje.classList.add('mensaje-maravilloso');
+        }
+        divMensaje.textContent = mensaje;
+        contenido.insertBefore(divMensaje, document.querySelector('#agregar-cita'));
+
+        //Quitar la alerta despues de 4 segundos
+        setTimeout( () => {
+            divMensaje.remove();
+        }, 4000);
+        }
     }
-
-}
 
 const administradorCitas = new Citas();
 const interfazUsuario = new InterfazUsuario();
@@ -78,7 +87,7 @@ function nuevaCita(e) {
     //con la informacion de los obejtos
     const {mascota, propietario, telefono, fecha, hora, sintomas} = citaObj;
     if( mascota=="" || propietario=="" || telefono=="" || fecha=="" || hora=="" || sintomas=="") {
-        console.log("Todos los campos deben de llenarse");
+        //console.log("Todos los campos deben de llenarse");
         interfazUsuario.imprimirAlerta("Todos los campos deben de llenarse", "error");
 
         return; 

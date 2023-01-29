@@ -9,7 +9,8 @@ body {
     flex-direction: column;
     align-items: center;
 
-    background-color:lavenderblush;
+    background-color:rgb(205, 255, 253);
+    color: rgb(58, 58, 58);
 
 }
 
@@ -18,7 +19,7 @@ input, textarea {
 }
 
 body div:first-child {
-    background-color:crimson;
+    background-color: rgb(255, 247, 249);
     padding: 1rem;
     border-radius: 20px;
 
@@ -26,18 +27,12 @@ body div:first-child {
 }
 
 
-#citas {
+#contenido {
+
+}
+
+#contenido #agregar-cita {
     display: flex;
-    font-size: 0.8rem;
-
-}
-
-#citas #nueva-cita {
-    margin: 0px 20px 0px 20px;
-}
-
-#citas #administrar-cita {
-    margin: 0px 20px 0px 20px;
 }
 
 .grupo-formulario {
@@ -50,21 +45,33 @@ body div:first-child {
 }
 
 .grupo-formulario button {
-    background-color: linen;
+    background-color: rgb(205, 255, 253);
     padding: 0.40em 1.5em;
     border-radius: 10px;
     margin-top: 10px;
     margin-left: 90px;
+    color:rgb(58, 58, 58);
 }
 
 .grupo-formulario button:hover {
-    background-color: lightcoral
+    background-color: rgb(135, 252, 248);
 }
 
+/*script js*/
 .mensaje-alerta {
-    height: 100px;
-    width: 50px;
-    background-color: brown;
+    background-color: rgb(233, 35, 75);
+    text-align: center;
+    color: rgb(255, 255, 255);
+
+    border-radius: 20px;
+}
+
+.mensaje-maravilloso {
+    background-color: lightgreen;
+    text-align: center;
+    color: rgb(51, 51, 51);
+
+    border-radius: 20px;
 }
 
 

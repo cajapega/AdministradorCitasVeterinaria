@@ -7,58 +7,61 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Administrador Citas Veterinaria</title>
         <link rel="icon" type="img/x-icon" href="img/Veterinario.png">
-        <link rel="stylesheet" href="css/style.css">
         <script defer src="js/script.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+
     </head>
     <body>
         <h2 id="titulo">Administrador de Citas de Veterinaria</h2>
         <div>
-            <div id="citas">
-                <form id = "nueva-cita">
-                    <h2>Datos del Paciente</h2>
-                    <div class="grupo-formulario">
-                        <label>Nombre Mascota</label>
-                        <div>
-                            <input type="text" id="mascota" name="mascota"></input>
+            <div id="contenido">
+                <div id="agregar-cita">
+                    <form id = "nueva-cita">
+                        <h2>Datos del Paciente</h2>
+                        <div class="grupo-formulario">
+                            <label>Nombre Mascota</label>
+                            <div>
+                                <input type="text" id="mascota" name="mascota"></input>
+                            </div>
                         </div>
-                    </div>
-                    <div class="grupo-formulario">
-                        <label>Propietario</label>
-                        <div>
-                            <input type="text" id="propietario" name="propietario"></input>
+                        <div class="grupo-formulario">
+                            <label>Propietario</label>
+                            <div>
+                                <input type="text" id="propietario" name="propietario"></input>
+                            </div>
                         </div>
-                    </div>
-                    <div class="grupo-formulario">
-                        <label>Teléfono</label>
-                        <div>
-                            <input type="tel" id="telefono" name="telefono"></input>
+                        <div class="grupo-formulario">
+                            <label>Teléfono</label>
+                            <div>
+                                <input type="tel" id="telefono" name="telefono"></input>
+                            </div>
                         </div>
-                    </div>
-                    <div class="grupo-formulario">
-                        <label>Fecha</label>
-                        <div>
-                            <input type="date" id="fecha" name="fecha"></input>
+                        <div class="grupo-formulario">
+                            <label>Fecha</label>
+                            <div>
+                                <input type="date" id="fecha" name="fecha"></input>
+                            </div>
                         </div>
-                    </div>
-                    <div class="grupo-formulario">
-                        <label>Hora</label>
-                        <div>
-                            <input type="time" id="hora" name="hora"></input>
+                        <div class="grupo-formulario">
+                            <label>Hora</label>
+                            <div>
+                                <input type="time" id="hora" name="hora"></input>
+                            </div>
                         </div>
-                    </div>
-                    <div class="grupo-formulario">
-                        <label>Sintomas</label>
-                        <div>
-                            <textarea id="sintomas" name="sintomas"></textarea>
+                        <div class="grupo-formulario">
+                            <label>Sintomas</label>
+                            <div>
+                                <textarea id="sintomas" name="sintomas"></textarea>
+                            </div>
                         </div>
+                        <div class="grupo-formulario">
+                            <button type="submit">Crear Cita</button>
+                        </div>
+                    </form>
+                    <div id="administra">
+                        <h2>Administra tus citas</h2>
+                        <ul id="citas" class="lista-citas"></ul>
                     </div>
-                    <div class="grupo-formulario">
-                        <button type="submit">Crear Cita</button>
-                    </div>
-                </form>
-                <div id="administra">
-                    <h2>Administra tus citas</h2>
-                    <ul id="citas" class="lista-citas"></ul>
                 </div>
             </div>
         </div>
