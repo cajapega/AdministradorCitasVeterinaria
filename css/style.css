@@ -49,6 +49,24 @@ body div:first-child {
     margin-left: 20px;
 }
 
+.grupo-formulario button {
+    background-color: linen;
+    padding: 0.40em 1.5em;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 90px;
+}
+
+.grupo-formulario button:hover {
+    background-color: lightcoral
+}
+
+.mensaje-alerta {
+    height: 100px;
+    width: 50px;
+    background-color: brown;
+}
+
 
 
 
