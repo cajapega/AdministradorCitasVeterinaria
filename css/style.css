@@ -12,6 +12,12 @@ body {
     background-color:rgb(205, 255, 253);
     color: rgb(58, 58, 58);
 
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+body > h2 {
+    font-size: xx-large;
 }
 
 input, textarea {
@@ -26,13 +32,13 @@ body div:first-child {
     line-height: 1.7rem;
 }
 
-
-#contenido {
-
-}
-
 #contenido #agregar-cita {
     display: flex;
+}
+
+#nueva-cita > h2, #administra > h2 {
+    text-align: center;
+    font-size: 1.25rem;
 }
 
 .grupo-formulario {
@@ -57,21 +63,8 @@ body div:first-child {
     background-color: rgb(135, 252, 248);
 }
 
-/*script js*/
-.mensaje-alerta {
-    background-color: rgb(233, 35, 75);
-    text-align: center;
-    color: rgb(255, 255, 255);
-
-    border-radius: 20px;
-}
-
-.mensaje-maravilloso {
-    background-color: lightgreen;
-    text-align: center;
-    color: rgb(51, 51, 51);
-
-    border-radius: 20px;
+#contenido #administra {
+    margin-left: 50px;
 }
 
 

@@ -55,24 +55,26 @@ class InterfazUsuario {
     imprimirAlerta(mensaje, tipo) {
         /*Creo variable que guardara el elemento contenido del DOM y dentro se insertara
         el nuevo elemento*/
-        const contenido = document.querySelector('#contenido');
-        //Creo el div del mensaje de alerta
         const divMensaje = document.createElement('div');
 
         //Agregar clase al tipo de error}
         if(tipo == "error") {
-            divMensaje.classList.add('mensaje-alerta');
-    
+            divMensaje.style.backgroundColor="rgb(255, 67, 104)";
+            divMensaje.style.color="rgb(255, 255, 255)";
+            divMensaje.style.textAlign="center";
         } else {
-            divMensaje.classList.add('mensaje-maravilloso');
+            //divMensaje.classList.add('mensaje-maravilloso');
         }
         divMensaje.textContent = mensaje;
+        
+        //Creo el div del mensaje de alerta
+        const contenido = document.querySelector('#contenido');
         contenido.insertBefore(divMensaje, document.querySelector('#agregar-cita'));
 
-        //Quitar la alerta despues de 4 segundos
+        //Quitar la alerta despues de 3 segundos
         setTimeout( () => {
             divMensaje.remove();
-        }, 4000);
+        }, 3000);
         }
     }
 
@@ -93,3 +95,4 @@ function nuevaCita(e) {
         return; 
     }
 }
+
