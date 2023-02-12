@@ -13,14 +13,14 @@ formulario.addEventListener('submit', nuevaCita);
 //Registro de eventos o Listeners
 eventListeners();
 function eventListeners() { //llamo la funcion
-    mascotaInput.addEventListener('input', datosCita);
+    mascotaInput.addEventListener('change', datosCita);
     /*Hay dos tipos para escuchas change e input la dif es que input lo hace en tiempo real
     (la docu es mas precisa cuando) y change se activa cuando elemento finaliza un cambio*/
-    propietarioInput.addEventListener('input', datosCita);
-    telefonoInput.addEventListener('input', datosCita);
-    fechaInput.addEventListener('input', datosCita);
-    horaInput.addEventListener('input', datosCita);
-    sintomasInput.addEventListener('input', datosCita);
+    propietarioInput.addEventListener('change', datosCita);
+    telefonoInput.addEventListener('change', datosCita);
+    fechaInput.addEventListener('change', datosCita);
+    horaInput.addEventListener('change', datosCita);
+    sintomasInput.addEventListener('change', datosCita);
 }
 
 const citaObj = {
@@ -35,7 +35,6 @@ const citaObj = {
 //Funcion que guarda los datos ingresados en el Objecto citaObj
 function datosCita(e) {
     citaObj[e.target.name] = e.target.value;
-    console.log(citaObj);
     //console.log(e.target.name)
     /*e es el objeto que representa el evento, y uno de sus atributos es el target, 
     que viene a ser el elemento que recibió el evento. (por ej un botón). Podemos especificar 
@@ -46,9 +45,15 @@ function datosCita(e) {
 
 //Clases citas e InterfazU y sus instancias
 class Citas {
-    //constructor() {
-    //    this.citas() = [];
-    //}
+    constructor() {
+        this.citas = new Array();
+    }
+
+    agregarCita(cita) {
+        this.citas = [...this.citas, cita];
+
+        console.log(this.citas);
+    }
 }
 
 class InterfazUsuario {
@@ -88,11 +93,33 @@ function nuevaCita(e) {
     //Extraigo la informacion del objeto de cita, realmente creo las variables y las guardo
     //con la informacion de los obejtos
     const {mascota, propietario, telefono, fecha, hora, sintomas} = citaObj;
-    if( mascota=="" || propietario=="" || telefono=="" || fecha=="" || hora=="" || sintomas=="") {
+    if( mascota==='' || propietario==='' || telefono==='' || fecha==='' || hora==='' || sintomas==='') {
         //console.log("Todos los campos deben de llenarse");
         interfazUsuario.imprimirAlerta("Todos los campos deben de llenarse", "error");
 
         return; 
     }
+    if(editando) {
+        interfazUsuario.imprimirAlerta("Guardado Correctamente");
+        formulario.querySelector('button[type="submit"]').textContent = 'Crear Cita';
+    } else {
+        //Genero un id unico
+        citaObj.id = Date.now();
+    
+        //Creo una nueva cita, le paso el objeto a la instancia de Citas
+        administradorCitas.agregarCita({...citaObj}); //los tres puntos pasan una copia
+    }
+
+    //Reinicia el objeto
+    reiniciarObjeto();
+    
+    //einiciar el formulario
+    formulario.reset();
 }
 
+
+
+
+function reiniciarObjeto () {
+
+}
