@@ -10,6 +10,7 @@ const contenedorCitas = document.querySelector('#citas');
 const formulario = document.querySelector('#nueva-cita');
 formulario.addEventListener('submit', nuevaCita);
 
+
 //Registro de eventos o Listeners
 eventListeners();
 function eventListeners() { //llamo la funcion
@@ -81,6 +82,39 @@ class InterfazUsuario {
             divMensaje.remove();
         }, 3000);
         }
+
+        imprimirCitas({ citas }) {//Extraigo las citas del objeto
+
+            citas.forEach(cita => {
+                const {mascota, propietario, telefono, fecha, hora, sintomas, id} = cita;
+
+                const divCita = document.createElement('div');
+                divCita.classList.add('cita');
+                divCita.dataset.id = id;
+
+                //Scripting de los elementos de la cita
+                const mascotaParrafo = document.createElement('h2');
+                mascotaParrafo.textContent = mascota;
+                const propietarioParrafo = document.createElement('p');
+                propietarioParrafo.textContent = propietario;
+                const telefonoParrafo = document.createElement('p');
+                propietarioParrafo.textContent = telefono;
+                const fechaParrafo = document.createElement('p');
+                propietarioParrafo.textContent = fecha;
+                const horaParrafo = document.createElement('p');
+                propietarioParrafo.textContent = hora;
+                const sintomasParrafo = document.createElement('p');
+                propietarioParrafo.textContent = sintomas;
+
+                //Agregar los parrafos al divCita
+                divCita.appendChild(mascotaParrafo);
+                divCita.appendChild(propietarioParrafo);
+
+                //Agregar las citas al HTML
+                contenedorCitas.appendChild(divCita);
+
+            });
+        }
     }
 
 const administradorCitas = new Citas();
@@ -99,6 +133,7 @@ function nuevaCita(e) {
 
         return; 
     }
+
     citaObj.id = Date.now();
     
     //Creo una nueva cita, le paso el objeto a la instancia de Citas
@@ -109,6 +144,9 @@ function nuevaCita(e) {
     
     //einiciar el formulario
     formulario.reset();
+
+    //Para imprimir citas necesto la ref completa del arreglo
+    interfazUsuario.imprimirCitas(administradorCitas);
 }
 
 
