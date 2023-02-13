@@ -99,16 +99,10 @@ function nuevaCita(e) {
 
         return; 
     }
-    if(editando) {
-        interfazUsuario.imprimirAlerta("Guardado Correctamente");
-        formulario.querySelector('button[type="submit"]').textContent = 'Crear Cita';
-    } else {
-        //Genero un id unico
-        citaObj.id = Date.now();
+    citaObj.id = Date.now();
     
-        //Creo una nueva cita, le paso el objeto a la instancia de Citas
-        administradorCitas.agregarCita({...citaObj}); //los tres puntos pasan una copia
-    }
+    //Creo una nueva cita, le paso el objeto a la instancia de Citas
+    administradorCitas.agregarCita({...citaObj}); //los tres puntos pasan una copia
 
     //Reinicia el objeto
     reiniciarObjeto();
@@ -118,8 +112,14 @@ function nuevaCita(e) {
 }
 
 
-
-
 function reiniciarObjeto () {
-
+    citaObj.mascota = '';
+    citaObj.propietario = '';
+    citaObj.telefono = '';
+    citaObj.fecha = '';
+    citaObj.hora = '';
+    citaObj.sintomas = '';
 }
+
+console.log(citaObj);
+
