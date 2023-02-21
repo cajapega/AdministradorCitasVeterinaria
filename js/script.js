@@ -96,23 +96,35 @@ class InterfazUsuario {
                 const mascotaParrafo = document.createElement('h2');
                 mascotaParrafo.textContent = mascota;
                 const propietarioParrafo = document.createElement('p');
-                propietarioParrafo.textContent = propietario;
+                propietarioParrafo.innerHTML = `<span> Propietario: </span> ${propietario}`; 
                 const telefonoParrafo = document.createElement('p');
-                propietarioParrafo.textContent = telefono;
+                telefonoParrafo.innerHTML = `<span> Telefono: </span> ${telefono}`;
                 const fechaParrafo = document.createElement('p');
-                propietarioParrafo.textContent = fecha;
+                fechaParrafo.innerHTML = `<span> Fecha: </span> ${fecha}`;
                 const horaParrafo = document.createElement('p');
-                propietarioParrafo.textContent = hora;
+                horaParrafo.innerHTML = `<span> Hora: </span> ${hora}`;
                 const sintomasParrafo = document.createElement('p');
-                propietarioParrafo.textContent = sintomas;
+                sintomasParrafo.innerHTML = `<span> Sintomas: </span> ${sintomas}`;
+
+                //Se añade Boton de eliminar
+                const btnEliminar = document.createElement('button');
+                btnEliminar.onclick = () => eliminarCita(id);
+
+                //Se añade Boton editar
+                const btnEditar = document.createElement('button');
+                btnEditar.onclick = () => cargarEdicion(cita);
 
                 //Agregar los parrafos al divCita
                 divCita.appendChild(mascotaParrafo);
                 divCita.appendChild(propietarioParrafo);
+                divCita.appendChild(telefonoParrafo);
+                divCita.appendChild(fechaParrafo);
+                divCita.appendChild(horaParrafo);
+                divCita.appendChild(sintomasParrafo);
+                divCita.appendChild(btnEliminar);
 
                 //Agregar las citas al HTML
                 contenedorCitas.appendChild(divCita);
-
             });
         }
     }
