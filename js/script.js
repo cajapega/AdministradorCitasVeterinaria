@@ -85,6 +85,7 @@ class InterfazUsuario {
 
         imprimirCitas({ citas }) {//Extraigo las citas del objeto
 
+            this.limpiarHTML(); //Mando a llamar el metodo antes de hacer la iteraccion
             citas.forEach(cita => {
                 const {mascota, propietario, telefono, fecha, hora, sintomas, id} = cita;
 
@@ -122,10 +123,20 @@ class InterfazUsuario {
                 divCita.appendChild(horaParrafo);
                 divCita.appendChild(sintomasParrafo);
                 divCita.appendChild(btnEliminar);
+                divCita.appendChild(btnEditar);
 
                 //Agregar las citas al HTML
                 contenedorCitas.appendChild(divCita);
             });
+        }
+
+        //Evita que se dupliquen las citas
+        limpiarHTML() {
+            while(contenedorCitas.firstChild) {
+                /*mientras sea verdadera la condicion eliminaremos cada uno de los hijos del 
+                //contenedor cita*/
+                contenedorCitas.removeChild(contenedorCitas.firstChild);
+            }
         }
     }
 
