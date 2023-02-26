@@ -24,6 +24,10 @@ input, textarea {
     border-radius: 10px;
 }
 
+/**/
+
+
+
 body div:first-child {
     background-color: rgb(255, 247, 249);
     padding: 1rem;
@@ -62,12 +66,7 @@ body div:first-child {
 .grupo-formulario button:hover {
     background-color: rgb(135, 252, 248);
 }
-*/
+
 #contenido #administra {
     margin-left: 50px;
 }
-
-
-
-
-

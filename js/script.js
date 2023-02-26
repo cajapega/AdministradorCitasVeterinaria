@@ -55,6 +55,11 @@ class Citas {
 
         console.log(this.citas);
     }
+
+    /*Vamos a acceder a citas y traeremos todas que sean diferentes a la que le estamos pasando*/
+    eliminarCita(id) {
+        this.citas = this.citas.filter( cita => cita.id !== id)
+    }
 }
 
 class InterfazUsuario {
@@ -90,8 +95,16 @@ class InterfazUsuario {
                 const {mascota, propietario, telefono, fecha, hora, sintomas, id} = cita;
 
                 const divCita = document.createElement('div');
-                divCita.classList.add('cita');
-                divCita.dataset.id = id;
+
+                //Style div Cita
+                divCita.style.fontSize = "0.85rem";
+                divCita.style.lineHeight = "0"; //elimina el interlineado
+                divCita.style.padding = "0";
+                divCita.style.paddingTop = "5px";
+
+
+                //Le agrego el ID generado
+                divCita.dataset.id = id; 
 
                 //Scripting de los elementos de la cita
                 const mascotaParrafo = document.createElement('h2');
@@ -109,10 +122,23 @@ class InterfazUsuario {
 
                 //Se añade Boton de eliminar
                 const btnEliminar = document.createElement('button');
+
+                btnEliminar.style.marginRight = "15px"; 
+                btnEliminar.style.padding = "0.40em 1.5em";
+                btnEliminar.style.borderRadius = "10px";
+
+                btnEliminar.textContent = 'Eliminar';
+                
                 btnEliminar.onclick = () => eliminarCita(id);
 
                 //Se añade Boton editar
                 const btnEditar = document.createElement('button');
+
+                btnEditar.style.padding = "0.30em 1.2em";
+                btnEditar.style.borderRadius = "10px";
+
+                btnEditar.textContent = 'Editar';
+
                 btnEditar.onclick = () => cargarEdicion(cita);
 
                 //Agregar los parrafos al divCita
@@ -180,6 +206,11 @@ function reiniciarObjeto () {
     citaObj.fecha = '';
     citaObj.hora = '';
     citaObj.sintomas = '';
+}
+
+function eliminarCita (id) {
+    administradorCitas.eliminarCita(id);
+    interfazUsuario.imprimirAlerta('La cita se elimino correctamente');
 }
 
 console.log(citaObj);
