@@ -6,10 +6,12 @@ const fechaInput = document.querySelector('#fecha');
 const horaInput = document.querySelector('#hora');
 const sintomasInput = document.querySelector('#sintomas');
 
+//UI
 const contenedorCitas = document.querySelector('#citas');
 const formulario = document.querySelector('#nueva-cita');
 formulario.addEventListener('submit', nuevaCita);
 
+let editando; //Esta variable al llamar funcion cargarEdicion se le cargara el valor de True 
 
 //Registro de eventos o Listeners
 eventListeners();
@@ -58,7 +60,17 @@ class Citas {
 
     /*Vamos a acceder a citas y traeremos todas que sean diferentes a la que le estamos pasando*/
     eliminarCita(id) {
+        //Filter quita un elemento o los demas dependiendo
         this.citas = this.citas.filter( cita => cita.id !== id)
+    }
+
+    editarCita(citaActualizada) {
+        /*Map a fiferencia de for each, ambos van a recorrer los elementos del arreglo pero Maps
+        nos crea un nuevo arreglo por lo tanto va a reescribir lo que tengamos en citas pero no se 
+        queda solo dentro de la funcion si no tambien en toda la variable arreglo cita de la clase 
+        (por el this). Entonces asi nos regresa un nuevo arreglo que se a va a asignar a citas,*/
+        this.citas = this.citas.map( cita => cita.id === citaActualizada.id ? citaActualizada : cita);
+
     }
 }
 
@@ -183,10 +195,32 @@ function nuevaCita(e) {
         return; 
     }
 
-    citaObj.id = Date.now();
+    if(editando) {
+        //Al entrar en modo edicion, no ejecutamos agregarCita  si no que crearemos 
+        //un nuevo metodo para actualizar la funcion nueva cita en el caso de editar
+
+        //Pasamos el objeto de la cita a edicion, pero una copia
+        administradorCitas.editarCita({...citaObj});
+
+        interfazUsuario.imprimirAlerta('Editado Correctamente');
+
+        //Devolvemos el mensaje del formulario a su tetxo original
+        formulario.querySelector('button[type="submit"]').textContent = "Crear Cita";
+
+        //Quitar modo edicion
+        editando = false;
+    } else {
+        //Modo Nueva Cita, primero creo el ID
+        citaObj.id = Date.now(); 
     
-    //Creo una nueva cita, le paso el objeto a la instancia de Citas
-    administradorCitas.agregarCita({...citaObj}); //los tres puntos pasan una copia
+        //Creo una nueva cita, le paso el objeto a la instancia de Citas
+        administradorCitas.agregarCita({...citaObj}); //los tres puntos pasan una copia
+
+        //Mensaje de Agregado correctamente
+        interfazUsuario.imprimirAlerta('Se agrego Correctamente')
+    }
+
+
 
     //Reinicia el objeto
     reiniciarObjeto();
@@ -211,6 +245,35 @@ function reiniciarObjeto () {
 function eliminarCita (id) {
     administradorCitas.eliminarCita(id);
     interfazUsuario.imprimirAlerta('La cita se elimino correctamente');
+    //Refresca las citas
+    interfazUsuario.imprimirCitas(administradorCitas);
+}
+
+function cargarEdicion(cita) {
+    const {mascota, propietario, telefono, fecha, hora, sintomas, id} = cita;
+
+    //Llenamos el objeto con los nuevos datos
+    citaObj.mascota = mascota;
+    citaObj.propietario = propietario;
+    citaObj.telefono = telefono;
+    citaObj.fecha = fecha;
+    citaObj.hora = hora;
+    citaObj.sintomas = sintomas;
+    citaObj.id = id;
+
+    //Vamos a llenar los input del html con .value, antes aplico destructuring para obetener los datos
+    mascotaInput.value = mascota;
+    propietarioInput.value = propietario;
+    telefonoInput.value = telefono;
+    fechaInput.value = fecha;
+    horaInput.value = hora;
+    sintomasInput.value = sintomas;
+
+    //Cambiar el texto del boton del formulario 
+    formulario.querySelector('button[type="submit"]').textContent = "Guardar Cambios";
+    
+    //Al convertirse en true en funcion nueva cita se pasara ese a un if
+    editando = true; 
 }
 
 console.log(citaObj);
