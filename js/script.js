@@ -86,7 +86,9 @@ class InterfazUsuario {
             divMensaje.style.color="rgb(255, 255, 255)";
             divMensaje.style.textAlign="center";
         } else {
-            //divMensaje.classList.add('mensaje-maravilloso');
+            divMensaje.style.backgroundColor="rgb(128, 248, 7)";
+            divMensaje.style.color="rgb(255, 255, 255)";
+            divMensaje.style.textAlign="center";
         }
         divMensaje.textContent = mensaje;
         
